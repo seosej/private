@@ -1,0 +1,31 @@
+https://roadrunner.tistory.com/214
+
+자바프로그램이 돌아가는 시스템(윈도우즈, 리눅스, 유닉스, 등)의 명령어를 java에서 실행시킨 후에 그 결과를 방아올 수 있다.
+ 
+Runtime.getRuntime().exec("시스템 명령어");
+ 
+ 
+시스템 명령어를 실행하고 그 결과를 받아서 화면에 표시하는 예제이다.
+ 
+try{
+    Process p = Runtime.getRuntime().exec("시스템 명령어");
+    BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+    String line = null;
+    
+    while((line = br.readLine()) != null){
+        System.out.println(line);
+    }
+}catch(Exception e){
+    System.out.println(e);
+}
+ 
+ 
+외부 프로그램을 실행하면서 해당 프로그램에 파라미터를 전달할 때는 배열로 전달한다.
+ 
+try{
+    String[] cmdArray = {"notepad.exe", "test.txt"};    //실행할 프로그램과 전달할 인수를 문자열 배열로 만든다.
+    Runtime.getRuntime().exec(cmdArray);
+}catch(Exception e){
+    System.out.println(e);
+}
+출처: https://roadrunner.tistory.com/214 [삶의 조각들:티스토리]
